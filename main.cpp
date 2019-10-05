@@ -79,7 +79,7 @@ int main(int argc, char **argv) {
         }
     }  else if (strcmp(argv[1], "weaklyhardmono") == 0) {
         if (argc != 4) {
-            cerr << "[Error] Please run the program with command: ./main weaklyhardsingle input_file K" << endl;
+            cerr << "[Error] Please run the program with command: ./main weaklyhardmono input_file K" << endl;
             return 0;
         }
         int n;
@@ -124,7 +124,7 @@ int main(int argc, char **argv) {
         }
     }   else if (strcmp(argv[1], "weaklyhardreuse") == 0) {
         if (argc != 4) {
-            cerr << "[Error] Please run the program with command: ./main weaklyhardsingle input_file K" << endl;
+            cerr << "[Error] Please run the program with command: ./main weaklyhardreuse input_file K" << endl;
             return 0;
         }
         int n;
