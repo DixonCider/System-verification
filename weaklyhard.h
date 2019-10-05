@@ -160,7 +160,7 @@ namespace Verification {
             transition[start] = {end0, end1};
             this->unsafe[start] = unsafe;
         }
-        int solve(int start_state = 0) {
+        int solve(int start_m = 1, int start_state = 0) {
             clock_t start, end;
             start = clock();
             int now_state = start_state;
@@ -170,8 +170,10 @@ namespace Verification {
             queue<pair<int, int>> que;
             vector<pair<int, int>> nextQue;
 
-            for (int m = 1; m <= k; m++) {
-                if (m == 1) {
+            for (int m = start_m; m <= k; m++) {
+                int nowid = m % 2;
+                int nxtid = (m + 1) % 2;
+                if (m == start_m) {
                     que.push({now_state, now_mask});
                     state->setStateVal(now_state, now_mask, 1);
                 } else {

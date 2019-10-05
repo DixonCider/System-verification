@@ -142,14 +142,15 @@ int main(int argc, char **argv) {
 
 
         vector<vector<int>> result(K + 1);
-        int prev = 0;
+        int prevm = 1;
         for (int k = 1; k <= K; k++) {
             printf("(%d)\n", k);
             Verification::WeaklyHardReuse solver(n, k);
             for (int i = 0; i < n; i++) {
                 solver.addEdgeMachine(i, transition[i].first.first, transition[i].first.second, transition[i].second);
             }
-            int ret = solver.solve();
+            int ret = solver.solve(prevm);
+            prevm = ret;
             for (int i = 0; i < ret; i++) {
                 result[k].push_back(0);
             }

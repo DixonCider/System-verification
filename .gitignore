@@ -1,2 +1,4 @@
 NuSMV*
 .DS_Store
+automata_testcases/
+verifier
