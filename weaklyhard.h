@@ -114,9 +114,9 @@ namespace Verification {
 
             end = clock();
             // double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
-            // cerr << "[Info] Time taken by solver: " << fixed  
+            // cout << "[Info] Time taken by solver: " << fixed  
             //      << time_taken << setprecision(5); 
-            // cerr << " sec " << endl << endl; 
+            // cout << " sec " << endl << endl; 
             return isUnsafe;
         }
         ~WeaklyHardSingle() {
@@ -170,7 +170,8 @@ namespace Verification {
             queue<pair<int, int>> que;
             vector<pair<int, int>> nextQue;
 
-            for (int m = start_m; m <= k; m++) {
+            int m;
+            for (m = start_m; m <= k; m++) {
                 int nowid = m % 2;
                 int nxtid = (m + 1) % 2;
                 if (m == start_m) {
@@ -215,20 +216,25 @@ namespace Verification {
                     }
                 }
                 if (isUnsafe) {
-                    return m;
+                    // return m;
+                    break;
                 }
             }
             
 
+            end = clock();
+            double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
+
+            /*
             if (isUnsafe) cout << "[Result] Unsafe\n";
             else cout << "[Result] Safe\n";
 
-            end = clock();
-            double time_taken = double(end - start) / double(CLOCKS_PER_SEC); 
-            cerr << "[Info] Time taken by solver: " << fixed  
+            cout << "[Info] Time taken by solver: " << fixed  
                  << time_taken << setprecision(5); 
-            cerr << " sec " << endl << endl; 
-            return k + 1;
+            cout << " sec " << endl << endl; 
+            */
+            // return k + 1;
+            return m;
         }
         ~WeaklyHardReuse() {
             delete state;
